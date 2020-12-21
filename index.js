@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 
 // Rooms
-const rooms = {};
+// const rooms = {};
 
 
 let io = require("socket.io")(server, {
@@ -33,31 +33,31 @@ let io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
     console.log('a user connected');
-    const userId = socket.id;
+    // const userId = socket.id;
 
     socket.on("createRoom", (data) => {
 
-      const username = JSON.parse(data).username;
+      // const username = JSON.parse(data).username;
       const roomId = CreateGuid();
-      rooms[roomId] = {userId: userId, username: username};
+      // rooms[roomId] = {userId: userId, username: username};
 
-      socket.emit("createRoom", JSON.stringify({roomId: roomId, userId:userId}));
+      socket.emit("createRoom", JSON.stringify({roomId: roomId}));
     });
 
     socket.on("joinRoom", (data) => {
       const roomId = JSON.parse(data).roomId;
-      if(rooms[roomId] !== undefined || rooms[roomId] !== null || rooms[roomId] !== ''){
+      // if(rooms[roomId] !== undefined || rooms[roomId] !== null || rooms[roomId] !== ''){
         socket.join(roomId)
         payload = {
           status: "ok",
-          room: rooms[roomId]
+          // room: rooms[roomId]
         }
-      } else {
-        payload = {
-          status: "faild",
-          room: null
-        }
-      }
+      // } else {
+      //   payload = {
+      //     status: "faild",
+      //     room: null
+      //   }
+      // }
 
       socket.emit("joinRoom", JSON.stringify(payload));
   });
@@ -65,13 +65,13 @@ io.on("connection", (socket) => {
   socket.on("sendDetails", (data) => {
     const receivedData = JSON.parse(data);
      
-    if(rooms[receivedData.roomId] !== undefined || rooms[receivedData.roomId] !== null || rooms[receivedData.roomId] !== ''){
+    // if(rooms[receivedData.roomId] !== undefined || rooms[receivedData.roomId] !== null || rooms[receivedData.roomId] !== ''){
       io.to(receivedData.roomId).emmit(receivedData.data);
         payload = {
           status: "ok",
-          room: rooms[roomId]
+          // room: rooms[roomId]
         }
-    }
+    // }
 
     socket.emit("sendDetails", JSON.stringify(payload));
 
