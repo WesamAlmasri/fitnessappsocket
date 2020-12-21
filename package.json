@@ -1,0 +1,22 @@
+{
+  "name": "chatsocket",
+  "version": "1.0.0",
+  "description": "this socket app for chat application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "12.18.3"
+  },
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "http": "0.0.1-security",
+    "socket.io": "3.0.3"
+  },
+  "keywords": [],
+  "author": "Eng Wesam Almasri",
+  "license": "ISC"
+}
