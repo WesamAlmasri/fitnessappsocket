@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
     const receivedData = JSON.parse(data);
      
     // if(rooms[receivedData.roomId] !== undefined || rooms[receivedData.roomId] !== null || rooms[receivedData.roomId] !== ''){
-      io.to(receivedData.roomId).emit(receivedData.data);
+      io.to(receivedData.roomId).emit('receiveData',receivedData.data);
         payload = {
           status: "ok",
           // room: rooms[roomId]
