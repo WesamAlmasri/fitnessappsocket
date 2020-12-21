@@ -41,7 +41,7 @@ io.on("connection", (socket) => {
       const roomId = CreateGuid();
       rooms[roomId] = {userId: userId, username: username};
 
-      socket.emit("createRoom", JSON.stringify({roomId: roomId}));
+      socket.emit("createRoom", JSON.stringify({roomId: roomId, userId:userId}));
     });
 
     socket.on("joinRoom", (data) => {
